@@ -23,7 +23,7 @@ pipeline{
         stage('Terraform apply') {
             steps{
                 sh'''
-                terrafprm apply
+                terraform apply -auto-approve
                 '''
             }
         }
