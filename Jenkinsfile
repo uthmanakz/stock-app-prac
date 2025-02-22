@@ -8,7 +8,8 @@ pipeline{
         stage ('Terraform Init') {
             steps{
                 sh'''
-                terraform init -auto-approve
+                yes "yes" | terraform init
+
                 '''
             }
         }
