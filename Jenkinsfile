@@ -51,7 +51,7 @@ pipeline{
                         ssh -o StrictHostKeyChecking=no ec2-user@$ANSIBLE '
                         sudo yum install git -y ;
                         echo "GIT CLONING stock-app-playbook-prac DIRECTORY"
-                        if [! -d stock-app-playbook-prac] ;
+                        if [ ! -d "stock-app-playbook-prac" ] ;
                         then
                         git clone https://github.com/uthmanakz/stock-app-playbook-prac.git ;
                         else
@@ -60,7 +60,7 @@ pipeline{
                         echo "stock-app-playbook-prac already exist so it has been git pulled instead" ;
                         fi
                         echo "GIT CLONING stock-app-inventory-prac DIRECTORY"
-                        if [! -d stock-app-inventory-prac-] ;
+                        if [ ! -d "stock-app-inventory-prac-"] ;
                         then
                         git clone https://github.com/uthmanakz/stock-app-inventory-prac-.git ;
                         else
