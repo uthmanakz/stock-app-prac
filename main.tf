@@ -8,7 +8,7 @@ resource "aws_instance" "web_ubuntu" {
     tags = {
         Name = "web-ubuntu"
         dev = "web"
-        OS = "amazon_linux"
+        OS = "ubuntu"
     }
 }
 
@@ -20,7 +20,7 @@ resource "aws_instance" "web_amazon" {
      tags = {
         Name = "web-amazon"
         dev = "web"
-        OS = "ubuntu"
+        OS = "amazon"
     }
 }
 
