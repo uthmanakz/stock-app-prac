@@ -27,6 +27,19 @@ pipeline{
                 '''
             }
         }
+
+        stage('Install ansible/dependencies') {
+            steps{
+                script{
+                    sshagent (credentials : ['SSH_PRIVATE_KEY']) {
+                        sh'''
+                        ANSIBLE=`terraform output | grep ANSIBLE | awk -F'"' '{print $2}'`
+                        ssh -o StrictHostKeyChecking=no ec2-user@$ANSIBLE 'sudo yum install python3-pip -y ; pip3 install ansible ; pip3 install boto3'
+                        '''
+                    }
+                }
+            }
+        }
     }
 
 }
