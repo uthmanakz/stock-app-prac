@@ -79,6 +79,7 @@ pipeline{
                 script{
                     sshagent (credentials: ['SSH_PRIVATE_KEY']) {
                         sh'''
+                        echo "{AWS_ACCESS_KEY_ID}"
                         ANSIBLE=`terraform output | grep ANSIBLE | awk -F'"' '{print $2}'`
                         ssh -o StrictHostKeyChecking=no ec2-user@$ANSIBLE '
                         export AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} ;
