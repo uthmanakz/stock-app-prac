@@ -40,6 +40,38 @@ pipeline{
                 }
             }
         }
+
+        stage('Git cloning inventory/playbook directory') {
+            steps{
+                script{
+                    sshagent (credentials: ['SSH_PRIVATE_KEY']) {
+                        sh'''
+                        ANSIBLE=`terraform output | grep ANSIBLE | awk -F'"' '{print $2}'`
+                        ssh -o StrictHostKeyChecking=no ec2-user@$ANSIBLE '
+                        sudo yum install git -y ;
+                        echo "GIT CLONING stock-app-playbook-prac DIRECTORY"
+                        if [! -d stock-app-playbook-prac] ;
+                        then
+                        git clone https://github.com/uthmanakz/stock-app-playbook-prac.git ;
+                        else
+                        cd stock-app-playbook-prac ; git pull ;
+                        cd ../ ;
+                        echo "stock-app-playbook-prac already exist so it has been git pulled instead" ;
+                        fi
+                        echo "GIT CLONING stock-app-inventory-prac DIRECTORY"
+                        if [! -d stock-app-inventory-prac-] ;
+                        then
+                        git clone https://github.com/uthmanakz/stock-app-inventory-prac-.git ;
+                        else
+                        cd stock-app-inventory-prac- ; git pull ;
+                        cd ;
+                        echo "stock-app-inventory-prac- directory already exist so it has been git pulled instead" ;
+                        fi '
+                        '''
+                    }
+                }
+            }
+        }
     }
 
 }
