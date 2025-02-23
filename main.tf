@@ -33,3 +33,26 @@ resource "aws_instance" "ansible" {
         Name = "ansible"
     }
 }
+
+resource "aws_instance" "app_ubuntu" {
+    ami = "ami-091f18e98bc129c4e"
+    instance_type = "t2.micro"
+    key_name = "simbababy"
+    tags = {
+        Name = "app-ubuntu"
+        dev = "app"
+        OS = "ubuntu"
+    }
+}
+
+resource "aws_instance" "app_amazon" {
+    ami = "ami-00710ab5544b60cf7"
+    instance_type = "t2.micro"
+    key_name = "simbababy"
+
+     tags = {
+        Name = "app-amazon"
+        dev = "app"
+        OS = "amazon"
+    }
+}
