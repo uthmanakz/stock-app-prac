@@ -78,14 +78,14 @@ pipeline{
             steps{
                 script{
                     sshagent (credentials: ['SSH_PRIVATE_KEY']) {
-                        sh'''
+                        sh"""
                         echo "{AWS_ACCESS_KEY_ID}"
                         ANSIBLE=`terraform output | grep ANSIBLE | awk -F'"' '{print $2}'`
                         ssh -o StrictHostKeyChecking=no ec2-user@$ANSIBLE '
                         export AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} ;
                         export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} ;
                         ansible-playbook -i stock-app-inventory-prac-/aws_ec2.yml stock-app-playbook-prac/web-playbook.yml'
-                        '''
+                        """
                     }
                 }
             }
