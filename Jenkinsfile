@@ -83,7 +83,8 @@ pipeline{
                         ssh -o StrictHostKeyChecking=no ec2-user@$ANSIBLE "
                         export AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} ;
                         export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} ;
-                        ansible-playbook -i stock-app-inventory-prac-/aws_ec2.yml stock-app-playbook-prac/web-playbook.yml"
+                        cd stock-app-inventory-prac- ;
+                        ansible-playbook -i aws_ec2.yml ../stock-app-playbook-prac/web-playbook.yml"
                         '''
                     }
                 }
