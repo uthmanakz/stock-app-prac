@@ -65,5 +65,6 @@ resource "aws_instance" "prometheus" {
 
      tags = {
         Name = "prometheus"
+        monitor = "prom"
     }
 }
