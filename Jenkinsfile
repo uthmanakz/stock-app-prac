@@ -108,7 +108,7 @@ pipeline{
             }
         }
 
-        stage('Running exporter-playbook') {
+        stage('Running node-exporter-playbook') {
             steps{
                 script{
                     sshagent (credentials: ['SSH_PRIVATE_KEY']) {
@@ -118,7 +118,24 @@ pipeline{
                         export AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} ;
                         export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} ;
                         cd stock-app-inventory-prac- ;
-                        ansible-playbook -i aws_ec2.yml ../stock-app-playbook-prac/exporter-playbook.yml"
+                        ansible-playbook -i aws_ec2.yml ../stock-app-playbook-prac/node-exporter-playbook.yml"
+                        '''
+                    }
+                }
+            }
+        }
+
+        stage('Running nginx-exporter-playbook') {
+            steps{
+                script{
+                    sshagent (credentials: ['SSH_PRIVATE_KEY']) {
+                        sh'''
+                        ANSIBLE=$(terraform output | grep ANSIBLE | awk -F'"' '{print $2}')
+                        ssh -o StrictHostKeyChecking=no ec2-user@$ANSIBLE "
+                        export AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} ;
+                        export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} ;
+                        cd stock-app-inventory-prac- ;
+                        ansible-playbook -i aws_ec2.yml ../stock-app-playbook-prac/nginx-exporter-playbook.yml"
                         '''
                     }
                 }
@@ -141,6 +158,8 @@ pipeline{
                 }
             }
         }
+
+    
     }
 
 }
