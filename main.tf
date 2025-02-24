@@ -56,3 +56,14 @@ resource "aws_instance" "app_amazon" {
         OS = "amazon"
     }
 }
+
+
+resource "aws_instance" "prometheus" {
+    ami = "ami-00710ab5544b60cf7"
+    instance_type = "t2.micro"
+    key_name = "simbababy"
+
+     tags = {
+        Name = "prometheus"
+    }
+}
