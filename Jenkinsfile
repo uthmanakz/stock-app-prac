@@ -108,7 +108,7 @@ pipeline{
             }
         }
 
-        stage('Running node-exporter-playbook') {
+        stage('Running web-exporter-playbook') {
             steps{
                 script{
                     sshagent (credentials: ['SSH_PRIVATE_KEY']) {
@@ -118,7 +118,7 @@ pipeline{
                         export AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} ;
                         export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} ;
                         cd stock-app-inventory-prac- ;
-                        ansible-playbook -i aws_ec2.yml ../stock-app-playbook-prac/node-exporter-playbook.yml"
+                        ansible-playbook -i aws_ec2.yml ../stock-app-playbook-prac/web-exporters-playbook.yml"
                         '''
                     }
                 }
