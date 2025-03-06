@@ -108,7 +108,7 @@ pipeline{
             }
         }
 
-         stage('Running app-playbook') {
+         stage('Running app-exporter-playbook') {
             steps{
                 script{
                     sshagent (credentials: ['SSH_PRIVATE_KEY']) {
