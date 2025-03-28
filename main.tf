@@ -4,7 +4,7 @@ provider "aws" {
 resource "aws_instance" "web_ubuntu" {
     ami = "ami-091f18e98bc129c4e"
     instance_type = "t2.micro"
-    key_name = "simbababy"
+    key_name = "uthmanakz"
     tags = {
         Name = "web-ubuntu"
         dev = "web"
@@ -15,7 +15,7 @@ resource "aws_instance" "web_ubuntu" {
 resource "aws_instance" "web_amazon" {
     ami = "ami-00710ab5544b60cf7"
     instance_type = "t2.micro"
-    key_name = "simbababy"
+    key_name = "uthmanakz"
 
      tags = {
         Name = "web-amazon"
@@ -27,7 +27,7 @@ resource "aws_instance" "web_amazon" {
 resource "aws_instance" "ansible" {
     ami = "ami-00710ab5544b60cf7"
     instance_type = "t2.micro"
-    key_name = "simbababy"
+    key_name = "uthmanakz"
 
      tags = {
         Name = "ansible"
@@ -37,7 +37,7 @@ resource "aws_instance" "ansible" {
 resource "aws_instance" "app_ubuntu" {
     ami = "ami-091f18e98bc129c4e"
     instance_type = "t2.micro"
-    key_name = "simbababy"
+    key_name = "uthmanakz"
     tags = {
         Name = "app-ubuntu"
         dev = "app"
@@ -48,7 +48,7 @@ resource "aws_instance" "app_ubuntu" {
 resource "aws_instance" "app_amazon" {
     ami = "ami-00710ab5544b60cf7"
     instance_type = "t2.micro"
-    key_name = "simbababy"
+    key_name = "uthmanakz"
 
      tags = {
         Name = "app-amazon"
@@ -61,7 +61,7 @@ resource "aws_instance" "app_amazon" {
 resource "aws_instance" "prometheus" {
     ami = "ami-00710ab5544b60cf7"
     instance_type = "t2.micro"
-    key_name = "simbababy"
+    key_name = "uthmanakz"
 
      tags = {
         Name = "prometheus"
