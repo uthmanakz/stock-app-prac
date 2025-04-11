@@ -4,9 +4,6 @@ This project automates the deployment and monitoring of a Stock Price web applic
 
 ---
 
-## 🏗️ Architecture Overview
-
-<pre> ``` ┌────────────────────┐ │ Jenkins CI/CD │ └────────┬───────────┘ │ ┌────────▼───────────┐ │ Ansible Control │ └────────┬───────────┘ │ ┌──────────────────┼───────────────────┐ │ │ │ ┌─────▼────┐ ┌─────▼────┐ ┌─────▼─────┐ │ NGINX 1 │ │ NGINX 2 │ │ Monitoring│ │ (Ubuntu)│ │ (Amazon) │ │ (Docker) │ │ + Exporter + Exporter Prometheus, │ Reverse Proxy Reverse Proxy Grafana, └─────┬────┘ └─────┬────┘ Node/NGX/JVM │ │ │ ┌─────▼────┐ ┌─────▼────┐ │ │ JAVA 1 │ │ JAVA 2 │ │ │ (Spring) │ │ (Spring) │ │ │ + Exporter + Exporter │ └──────────┘ └──────────┘ ▼ All Hosted on AWS EC2 Instances ``` </pre>
 
 ## 🧰 Technologies Used
 
